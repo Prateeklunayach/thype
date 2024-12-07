@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #0f1023;
+}
+
+.app-primary-font{
+  color: rgb(105, 91, 196);
+}
+
+.app-primary-bg{
+  background-color: rgb(105, 91, 196);
+}
+
+html, body{
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.section-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.section-container.reverse {
+  flex-direction: row-reverse; /* Ensures content is on the right */
+}
+
+.section-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.section-content {
+  flex: 1;
+}
+@keyframes border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-border-flow {
+  background-size: 200% 200%;
+  animation: border-flow 3s linear infinite;
+}
