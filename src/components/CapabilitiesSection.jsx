@@ -46,6 +46,7 @@ const CapabilitiesSection = () => {
         transition: "background-color 0.8s ease-in-out"
       }}
     >
+      
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -53,10 +54,12 @@ const CapabilitiesSection = () => {
         transition={{ duration: 0.8 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16"
       >
+        <hr style={{borderColor:"#302e41"}} className="border-t-1 mt-16 mb-10" />
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
+          style={{color:"#302e41"}}
           className="text-5xl md:text-7xl font-extrabold text-gray-800 leading-tight"
         >
           FROM MINIMUM VIABLE
@@ -685,13 +688,13 @@ const CapabilitiesSection = () => {
               className="relative rounded-[2rem] border border-indigo-100 hover:border-indigo-200 transition-colors p-12"
             >
               {/* Logo Container */}
-              <div className="absolute -top-5 left-12 bg-white px-4">
+              <div className="absolute -top-5 left-12 bg-white px-4 ">
                 <img 
                   src="2.3.webp" 
                   className="h-10"
                 />
               </div>
-              <div className="pt-4">
+              <div className="pt-4 ">
                 <p className="text-gray-700 text-lg leading-relaxed">
                   HERE Maps is a PaaS for building, deploying and scaling location solutions. Armed with critical location data and technology tools, they're developing solutions that solve the biggest challenges in mapping today.{' '}
                   <a href="#" className="text-indigo-500 hover:text-indigo-600 font-medium inline-flex items-center group">
@@ -706,7 +709,7 @@ const CapabilitiesSection = () => {
       </section>
 
       {/* Footer Section */}
-      <div className="w-full bg-black text-white py-16">
+      <div className="mt-24 w-full bg-black text-white py-16 ">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
             {/* Left Section */}

@@ -3,34 +3,35 @@ import { motion } from 'framer-motion';
 
 const AboutSection = () => {
   return (
-    <div className="bg-white py-24">
+    <div className="bg-white py-12 sm:py-24 mt-8 sm:mt-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="max-w-4xl mb-20">
+        <div className="max-w-4xl mb-12 sm:mb-20">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0, x: 250 }}
             transition={{ duration: 0.6 }}
-            className="text-[#1d1b2e] text-6xl md:text-7xl font-bold mb-8"
+            className="text-[#1d1b2e] text-4xl sm:text-6xl font-bold mb-6 sm:mb-10 mt-8 sm:mt-12"
           >
             YOU'RE IN GOOD COMPANY
           </motion.h1>
+          
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0, x: 250 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-600 text-xl leading-relaxed"
+            className="text-gray-600 text-base sm:text-xl leading-relaxed"
           >
             At White Widget, our mission is to make software that serves millions globally. We're an assembly of diverse, talented minds, where you're guaranteed to feel welcomed and supported. We're always looking for great people, so don't be shy and apply today.
           </motion.p>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0, x: 250 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-8"
+            className="mt-6 sm:mt-8"
           >
-            <button className="bg-[#1d1b2e] text-white px-6 py-3 rounded-lg hover:bg-[#2d2b3e] transition-colors">
+            <button className="w-full sm:w-auto bg-[#1d1b2e] text-white px-6 py-3 rounded-lg hover:bg-[#2d2b3e] transition-colors">
               See openings
             </button>
           </motion.div>
@@ -41,58 +42,101 @@ const AboutSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="max-w-6xl mx-auto px-2 sm:px-4"
         >
-          {/* Image Grid */}
-          <div className="space-y-8">
-            <div className="rounded-2xl overflow-hidden">
-              <img 
-                src="/path-to-your-image-1.jpg" 
-                alt="Team activity" 
-                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden">
-              <img 
-                src="/path-to-your-image-2.jpg" 
-                alt="Team members" 
-                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {/* First Column */}
+            <motion.div 
+              className="space-y-4 sm:space-y-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <motion.div 
+                className="rounded-xl overflow-hidden shadow-lg h-40 sm:h-48 md:h-56"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <img 
+                  src="photo5.PNG" 
+                  alt="Team activity" 
+                  className="w-full h-full object-cover transform hover:filter hover:brightness-110 transition-all duration-300"
+                />
+              </motion.div>
+              <motion.div 
+                className="rounded-xl overflow-hidden shadow-lg h-48 md:h-56"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <img 
+                  src="7.5.png" 
+                  alt="Team members" 
+                  className="w-full h-full object-cover transform hover:filter hover:brightness-110 transition-all duration-300"
+                />
+              </motion.div>
+            </motion.div>
 
-          <div className="space-y-8 mt-12 md:mt-24">
-            <div className="rounded-2xl overflow-hidden">
-              <img 
-                src="/path-to-your-image-3.jpg" 
-                alt="Team photo" 
-                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden">
-              <img 
-                src="/path-to-your-image-4.jpg" 
-                alt="Office culture" 
-                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
+            {/* Second Column */}
+            <motion.div 
+              className="space-y-4 sm:space-y-6 mt-4 sm:mt-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <motion.div 
+                className="rounded-xl overflow-hidden shadow-lg h-48 md:h-56"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <img 
+                  src="photo1.JPEG" 
+                  alt="Team photo" 
+                  className="w-full h-full object-cover transform hover:filter hover:brightness-110 transition-all duration-300"
+                />
+              </motion.div>
+              <motion.div 
+                className="rounded-xl overflow-hidden shadow-lg h-48 md:h-56"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <img 
+                  src="photo2.jpg" 
+                  alt="Office culture" 
+                  className="w-full h-full object-cover transform hover:filter hover:brightness-110 transition-all duration-300"
+                />
+              </motion.div>
+            </motion.div>
 
-          <div className="space-y-8 mt-0 md:mt-48">
-            <div className="rounded-2xl overflow-hidden">
-              <img 
-                src="/path-to-your-image-5.jpg" 
-                alt="Team gathering" 
-                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden">
-              <img 
-                src="/path-to-your-image-6.jpg" 
-                alt="Office life" 
-                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+            {/* Third Column */}
+            <motion.div 
+              className="space-y-4 sm:space-y-6 mt-4 sm:mt-24"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <motion.div 
+                className="rounded-xl overflow-hidden shadow-lg h-48 md:h-56"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <img 
+                  src="photo3.jpg" 
+                  alt="Team gathering" 
+                  className="w-full h-full object-cover transform hover:filter hover:brightness-110 transition-all duration-300"
+                />
+              </motion.div>
+              <motion.div 
+                className="rounded-xl overflow-hidden shadow-lg h-48 md:h-56"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <img 
+                  src="photo4.PNG" 
+                  alt="Office life" 
+                  className="w-full h-full object-cover transform hover:filter hover:brightness-110 transition-all duration-300"
+                />
+              </motion.div>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -123,7 +167,7 @@ const AboutSection = () => {
               <div className="p-6 bg-white rounded-xl border border-gray-200">
                 <div className="mb-4 bg-white rounded-xl p-4">
                   <img 
-                    src="/path-to-people-icon.svg" 
+                    src="8.1.png" 
                     alt="People First Icon" 
                     className="w-full h-32 object-contain"
                   />
@@ -138,7 +182,7 @@ const AboutSection = () => {
               <div className="p-6 bg-white rounded-xl border border-gray-200">
                 <div className="mb-4 bg-white rounded-xl p-4">
                   <img 
-                    src="/path-to-collaboration-icon.svg" 
+                    src="8.2.png" 
                     alt="Collaboration Icon" 
                     className="w-full h-32 object-contain"
                   />
@@ -153,7 +197,7 @@ const AboutSection = () => {
               <div className="p-6 bg-white rounded-xl border border-gray-200">
                 <div className="mb-4 bg-white rounded-xl p-4">
                   <img 
-                    src="/path-to-passion-icon.svg" 
+                    src="8.3.png" 
                     alt="Passion Icon" 
                     className="w-full h-32 object-contain"
                   />
@@ -168,7 +212,7 @@ const AboutSection = () => {
               <div className="p-6 bg-white rounded-xl border border-gray-200">
                 <div className="mb-4 bg-white rounded-xl p-4">
                   <img 
-                    src="/path-to-initiative-icon.svg" 
+                    src="8.4.png" 
                     alt="Initiative Icon" 
                     className="w-full h-32 object-contain"
                   />
@@ -183,7 +227,7 @@ const AboutSection = () => {
               <div className="p-6 bg-white rounded-xl border border-gray-200">
                 <div className="mb-4 bg-white rounded-xl p-4">
                   <img 
-                    src="/path-to-excellence-icon.svg" 
+                    src="8.5.png" 
                     alt="Excellence Icon" 
                     className="w-full h-32 object-contain"
                   />
@@ -198,7 +242,7 @@ const AboutSection = () => {
               <div className="p-6 bg-white rounded-xl border border-gray-200">
                 <div className="mb-4 bg-white rounded-xl p-4">
                   <img 
-                    src="/path-to-transparency-icon.svg" 
+                      src="8.6.png" 
                     alt="Transparency Icon" 
                     className="w-full h-32 object-contain"
                   />
@@ -244,7 +288,7 @@ const AboutSection = () => {
                 <h3 className="text-2xl font-bold mb-4">Boredom at work</h3>
                 <div className="rounded-xl overflow-hidden mb-4">
                   <img 
-                    src="/path-to-boredom-image.jpg" 
+                    src="9.1.png" 
                     alt="No boredom at work" 
                     className="w-full h-64 object-cover"
                   />
@@ -259,7 +303,7 @@ const AboutSection = () => {
                 <h3 className="text-2xl font-bold mb-4">Supervillain clients</h3>
                 <div className="rounded-xl overflow-hidden mb-4">
                   <img 
-                    src="/path-to-clients-image.jpg" 
+                    src="9.2.png" 
                     alt="No supervillain clients" 
                     className="w-full h-64 object-cover"
                   />
@@ -274,7 +318,7 @@ const AboutSection = () => {
                 <h3 className="text-2xl font-bold mb-4">Mandatory traffic</h3>
                 <div className="rounded-xl overflow-hidden mb-4">
                   <img 
-                    src="/path-to-traffic-image.jpg" 
+                    src="9.3.png" 
                     alt="No mandatory traffic" 
                     className="w-full h-64 object-cover"
                   />
@@ -289,7 +333,7 @@ const AboutSection = () => {
                 <h3 className="text-2xl font-bold mb-4">Lack of snacks</h3>
                 <div className="rounded-xl overflow-hidden mb-4">
                   <img 
-                    src="/path-to-snacks-image.jpg" 
+                    src="9.4.png" 
                     alt="No lack of snacks" 
                     className="w-full h-64 object-cover"
                   />
@@ -303,11 +347,11 @@ const AboutSection = () => {
         </div>
 
         {/* Footer Section */}
-        
+    
     </div>
-    <footer className="w-full bg-black text-white py-16">
+    <footer className="w-full bg-black text-white py-8 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 sm:gap-12">
               {/* Left Section */}
               <div className="col-span-3">
                 <h2 className="text-6xl font-bold mb-8">Let's get to work.</h2>
@@ -358,6 +402,7 @@ const AboutSection = () => {
           </div>
         </footer>
       </div>
+    
   );
 };
 

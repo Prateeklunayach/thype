@@ -44,7 +44,7 @@ const ContactNew = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Left Section */}
             <div className="lg:sticky lg:top-32 lg:h-fit">
-              <h1 className="text-6xl md:text-7xl font-bold mb-8">LET'S TALK</h1>
+              <h1 className="text-6xl md:text-7xl font-bold mb-8 mt-12">LET'S TALK</h1>
               <p className="text-lg mb-4 text-white/80">
                 We'd love to connect with you and learn more about what we can build together. Tell us a few details and we'll be in touch.
               </p>
@@ -63,7 +63,7 @@ const ContactNew = () => {
                 <div className="space-y-10">
                   {/* Name Input */}
                   <div>
-                    <label className="block text-sm uppercase mb-3 text-white/70">Your Name</label>
+                    <label className="block text-sm uppercase mb-3 text-white/70 mt-12">Your Name</label>
                     <input
                       type="text"
                       required

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { Contact, Route } from "lucide-react";
 import React, { useRef, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { 
   HiOutlineScale,
   HiOutlineLockClosed,
@@ -11,89 +13,54 @@ import {
 
 const Hero = () => {
   return (
-    <div className="w-full h-screen bg-white flex flex-col justify-center items-center relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="relative w-full h-full">
-          {/* Gradient Orbs */}
+    <div className="w-full h-screen flex flex-col justify-center items-center relative overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <div className="absolute z-10" /> {/* Overlay for better text visibility */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/animation1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      {/* Floating Elements - Above Video */}
+      <div className="absolute inset-0 z-20">
+        {[...Array(10)].map((_, i) => (
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
+            key={i}
+            initial={{ 
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: 0
+            }}
             animate={{ 
+              y: [0, -20, 0],
               scale: [1, 1.2, 1],
-              opacity: [0.5, 0.8, 0.5],
+              opacity: [0.3, 0.6, 0.3]
             }}
             transition={{
-              duration: 8,
+              duration: 3 + Math.random() * 2,
               repeat: Infinity,
-              ease: "easeInOut"
+              delay: i * 0.2
             }}
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+            className="absolute w-4 h-4 bg-white/30 rounded-full blur-sm"
           />
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ 
-              scale: [1.2, 1, 1.2],
-              opacity: [0.5, 0.8, 0.5],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1
-            }}
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
-          />
-
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 grid grid-cols-8 grid-rows-8">
-            {[...Array(64)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0.1, 0.3, 0.1] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  delay: i * 0.1,
-                  ease: "easeInOut"
-                }}
-                className="border border-gray-200/20"
-              />
-            ))}
-          </div>
-
-          {/* Floating Elements */}
-          {[...Array(10)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{ 
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                scale: 0
-              }}
-              animate={{ 
-                y: [0, -20, 0],
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.6, 0.3]
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: i * 0.2
-              }}
-              className="absolute w-4 h-4 bg-white/30 rounded-full blur-sm"
-            />
-          ))}
-        </div>
+        ))}
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center px-4">
+      <div className="relative z-30 text-center px-4">
         <motion.h1
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="text-6xl md:text-7xl font-extrabold text-gray-800"
+          className="text-6xl md:text-7xl font-extrabold text-black" // Changed to white
         >
           THE SMALL STUDIO<br />FOR GIANT AMBITIONS
         </motion.h1>
@@ -101,23 +68,30 @@ const Hero = () => {
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
-          className="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
+          className="mt-16 text-lg md:text-xl text-black max-w-4xl justify-center mx-auto" // Changed to lighter color
         >
-          We design, build, and ship exceptional software and AI solutions for
-          innovation-driven companies worldwide.
+          We design, build, and ship exceptional software and AI <br className="mb-10"/>
+          solutions for innovation-driven companies worldwide.
         </motion.p>
+        <Link to="/contact">
         <motion.button
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           whileHover={{ 
             scale: 1.05,
-            boxShadow: "0 0 20px rgba(0,0,0,0.2)"
+            boxShadow: "0 0 20px rgba(255,255,255,0.3,)",
+           
           }}
           transition={{ delay: 1, duration: 0.5 }}
-          className="mt-10 px-8 py-3 bg-gray-800 text-white rounded-lg text-base md:text-lg font-semibold transform transition-all duration-300"
+          className="mt-10 px-8 py-3 bg-black text-white rounded-lg text-base md:text-lg font-semibold 
+                     transform transition-all duration-300 hover:bg-gray-600"
+                    
         >
-          Build with us
+          Build with Us
+         
+          
         </motion.button>
+        </Link>
       </div>
     </div>
   );
@@ -125,7 +99,7 @@ const Hero = () => {
 
 const LandingContent = () => {
   return (
-    <div className="w-full bg-white py-20 relative">
+    <div style={{backgroundColor: "#f6f6f6"}} className="w-full py-20 relative">
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -252,37 +226,106 @@ const LandingContent = () => {
 
 const Capabilities = () => {
   const [selectedCapability, setSelectedCapability] = useState(null);
+  const videoRef = useRef(null);
+  const [isClosing, setIsClosing] = useState(false);
 
   const capabilities = [
     {
       title: "UX/UI DESIGN",
-      content: "Our design process combines aesthetics with functionality. We create intuitive, responsive interfaces that delight users and drive engagement. Services include wireframing, prototyping, user research, and comprehensive UI systems.",
-      tools: ["Figma", "Adobe XD", "Sketch", "InVision"]
+      content: "We believe the core of every successful product or service is a remarkable user experience. We start every project by designing an intuitive user journey that’s rooted in deep user and industry research.",
+      tools: ["Figma", "Adobe XD", "Sketch", "InVision"],
+      openVideo: "/dev1-open.mp4",
+      closeVideo: "/dev1-close.mp4"
     },
     {
       title: "CUSTOM DEVELOPMENT",
-      content: "End-to-end software development tailored to your specific needs. From web applications to mobile apps, we build scalable solutions using cutting-edge technologies.",
-      tools: ["React", "Node.js", "Python", "Flutter"]
+      content: "Our full-stack engineers and designers work as a single unit to build exceptional software and user experiences. Every project is built with scalability, performance, reusability, and clean code in mind.",
+      tools: ["React", "Node.js", "Python", "Flutter"],
+      openVideo: "/dev2-open.mp4",
+      closeVideo: "/dev2-close.mp4"
     },
     {
-      title: "AI AND DATA SCIENCE",
-      content: "Leverage the power of artificial intelligence and machine learning to gain insights and automate processes. We build custom AI solutions that drive business value.",
-      tools: ["TensorFlow", "PyTorch", "Scikit-learn", "OpenAI"]
+      title: "AI DEVELOPMENT",
+      content: "AI is changing the way we live, work, and use software. That’s why we have a dedicated AI and data science team. From predictive analytics to natural language processing, we integrate robust, cutting-edge AI models into your apps and services with accuracy, speed, and value in mind.",
+      tools: ["React", "Node.js", "Python", "Flutter"],
+      openVideo: "/dev3-open.mp4",
+      closeVideo: "/dev3-close.mp4"
     },
     {
       title: "DEVOPS",
-      content: "Streamline your development and deployment processes with our DevOps expertise. We implement CI/CD pipelines and manage cloud infrastructure for optimal performance.",
-      tools: ["AWS", "Docker", "Kubernetes", "Jenkins"]
+      content: "Our approach is to deploy using containers and close-to-metal servers, enabling you to scale to millions of users. We strike a fine balance, often reducing cloud costs while finding ways to improve performance. Working closely with our client-partners, our projects have historically delivered above 99.9% uptime.",
+      tools: ["React", "Node.js", "Python", "Flutter"],
+      openVideo: "/dev4-open.mp4",
+      closeVideo: "/dev4-close.mp4"
     },
     {
       title: "CYBERSECURITY",
-      content: "Protect your digital assets with our comprehensive security solutions. We implement robust security measures and conduct regular audits to ensure your data stays safe.",
-      tools: ["Penetration Testing", "Security Audits", "Encryption", "Access Control"]
-    },
+      content: " From start to finish, we integrate tight security processes and standards. We architect systems to have monitoring and guardrails to detect vulnerabilities and avoid breaches.",
+      tools: ["React", "Node.js", "Python", "Flutter"],
+      openVideo: "/dev5-open.mp4",
+      closeVideo: "/dev5-close.mp4"
+    }
+
+    // ... rest of your capabilities
   ];
 
+  const handleCapabilityClick = async (index) => {
+    const capability = capabilities[index];
+
+    if (!capability) {
+      console.error(`Capability at index ${index} does not exist.`);
+      return;
+    }
+
+    const isSelected = selectedCapability === index;
+
+    if (isSelected) {
+      // If already selected, initiate closing
+      setIsClosing(true);
+      const videoSrc = capability.closeVideo;
+
+      if (videoRef.current && videoSrc) {
+        videoRef.current.src = videoSrc;
+        try {
+          await videoRef.current.play();
+          // After closing video ends, collapse the text
+          videoRef.current.onended = () => {
+            setSelectedCapability(null);
+            setIsClosing(false);
+          };
+        } catch (err) {
+          console.error("Video playback failed:", err);
+          setSelectedCapability(null);
+          setIsClosing(false);
+        }
+      } else {
+        // If no video, simply collapse
+        setSelectedCapability(null);
+        setIsClosing(false);
+      }
+    } else {
+      // If not selected, initiate opening
+      const videoSrc = capability.openVideo;
+
+      if (videoRef.current && videoSrc) {
+        videoRef.current.src = videoSrc;
+        try {
+          await videoRef.current.play();
+          setSelectedCapability(index);
+        } catch (err) {
+          console.error("Video playback failed:", err);
+          // Optionally, you might want to set the capability even if video fails
+          setSelectedCapability(index);
+        }
+      } else {
+        // If no video, simply expand
+        setSelectedCapability(index);
+      }
+    }
+  };
+
   return (
-    <div className="w-full bg-white py-20 relative">
+    <div style={{ backgroundColor: "#f6f6f6" }} className="w-full py-20 relative">
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -290,88 +333,114 @@ const Capabilities = () => {
         viewport={{ once: true }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="relative mb-24">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 app-primary-font mb-4">
-            CAPABILITIES
-          </h2>
-          <div className="absolute -bottom-6 left-0 w-[1200px] h-[1px] bg-purple-800/50"></div>
+        <div className="relative mb-20">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="w-10 h-10 rounded-full bg-[#695cc4] flex items-center justify-center">
+              <span className="text-white font-semibold">1</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#695cc4] tracking-wide">
+              CAPABILITIES
+            </h2>
+          </div>
+          <div className="absolute bottom left-0 w-[1200px] h-[1px] bg-[#695cc4]/50"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          {/* Video Section */}
           <motion.div
+          style={{marginTop:"-30px"}}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="flex justify-center items-center"
           >
-            <img
-              src="/capabilities-illustration.png"
-              alt="Capabilities Illustration"
-              className="max-w-full h-auto"
+            <video
+              style={{ width: "100%", maxWidth: "430px" }}
+              ref={videoRef}
+              className="h-auto rounded-lg"
+              playsInline
+              muted
             />
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="flex flex-col justify-center items-start"
-          >
-            <p className="text-xl text-gray-600 mb-12">
-              All the design and tech expertise you need. From initial sketch to
-              launch to scale.
-            </p>
-            <ul className="space-y-8 w-full">
-              {capabilities.map((capability, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className="w-full"
+          {/* Capabilities List */}
+          <div className="space-y-8">
+            <div className="text-lg md:text-xl text-gray-700 text-justify">All the design and tech expertise you need.<br/>
+            From initial sketch to launch to scale.</div>
+            <br/>
+            {capabilities.map((capability, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="w-full list-none "
+              >
+                <div
+                  className={`flex justify-between items-center cursor-pointer group ${
+                    isClosing && selectedCapability === index ? "opacity-50" : ""
+                  }`}
+                  onClick={() => handleCapabilityClick(index)}
                 >
-                  <div className="flex justify-between items-center cursor-pointer group"
-                       onClick={() => setSelectedCapability(selectedCapability === index ? null : index)}>
-                    <span className="text-2xl font-medium text-gray-800 tracking-wide">
-                      {capability.title}
-                    </span>
-                    <motion.span
-                      animate={{ rotate: selectedCapability === index ? 45 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-2xl font-medium text-gray-800 group-hover:text-purple-600"
-                    >
-                      +
-                    </motion.span>
-                  </div>
-                  
-                  {selectedCapability === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="mt-4 pl-4 border-l-2 border-purple-500"
-                    >
-                      <p className="text-gray-600 mb-4">{capability.content}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {capability.tools.map((tool, toolIndex) => (
-                          <span
-                            key={toolIndex}
-                            className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm"
-                          >
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+                  <span className="text-2xl mt-2 font-large text-gray-800 tracking-wide">
+                    {capability.title}
+                  </span>
+                  <motion.span
+                    animate={{ rotate: selectedCapability === index && !isClosing ? 45 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-2xl font-medium text-gray-800 group-hover:text-purple-600"
+                  >
+                    +
+                  </motion.span>
+                </div>
+
+                {/* Expanded Content */}
+                {selectedCapability === index && !isClosing && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pl-4 border-l-2 border-"
+                  >
+                    <p className="text-gray-600 mb-4">{capability.content}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {capability.tools.map((tool, toolIndex) => (
+                        <span
+                          key={toolIndex}
+                          className="px-3 py-1 bg-[#695cc4]/10 text-[#695cc4] rounded-full text-sm"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </motion.li>
+            ))}
+
+           <div className="">
+           <motion.button
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          whileHover={{ 
+            scale: 1.05,
+            boxShadow: "0 0 20px rgba(255,255,255,0.3,)",
+           
+          }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className="mt-8 px-6 py-2 bg-[#302e41] text-white rounded-lg text-base md:text-lg font-semibold 
+                     transform transition-all duration-300 hover:bg-gray-600"
+                    
+        >
+          More on our capabilities
+         
+          
+        </motion.button>
+           </div>
+          </div>
         </div>
       </motion.div>
     </div>
@@ -444,14 +513,23 @@ const ProjectsSection = () => {
       >
         <div className="relative mb-20">
           <div className="flex items-center gap-4 mb-3">
-            <div className="w-8 h-8 rounded-full bg-[#98ff98] flex items-center justify-center">
-              <span className="text-gray-900 font-semibold">2</span>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-700"
+                 style={{
+                   backgroundColor: isProjectsVisible ? "#98ff98" : "#695cc4"
+                 }}>
+              <span className="text-white font-semibold">2</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#98ff98] tracking-wide">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-wide transition-colors duration-700"
+                style={{
+                  color: isProjectsVisible ? "#98ff98" : "#695cc4"
+                }}>
               PROJECTS
             </h2>
           </div>
-          <div className="absolute bottom left-0 w-[1200px] h-[1px] bg-[#98ff98]/50"></div>
+          <div className="absolute bottom left-0 w-[1200px] h-[1px] transition-colors duration-700"
+               style={{
+                 backgroundColor: isProjectsVisible ? "rgba(152, 255, 152, 0.5)" : "rgba(105, 92, 196, 0.5)"
+               }}></div>
         </div>
 
         <div className="mt-16 mb-20">
